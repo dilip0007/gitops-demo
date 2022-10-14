@@ -1,17 +1,21 @@
 pipeline {
     agent any
-    environment {
-        DOCKERHUB_USERNAME = "kunchalavikram"
-        APP_NAME = "gitops-demo-app"
-        IMAGE_TAG = "${BUILD_NUMBER}"
-        IMAGE_NAME = "${DOCKERHUB_USERNAME}" + "/" + "${APP_NAME}"
-        REGISTRY_CREDS = 'dockerhub'
-        }
+
     stages {
-        stage('Cleanup Workspace'){
+        stage('Build') {
             steps {
-                script {
-                    cleanWs()
-                }
+                echo 'Building..'
             }
         }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
+        }
+    }
+}
