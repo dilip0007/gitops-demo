@@ -15,7 +15,7 @@ pipeline {
                 
             }
         }
-    }
+    
         stage('Cleanup Workspace'){
             steps {
                 script {
@@ -23,4 +23,5 @@ pipeline {
                 }
             }
         }
+    }
 }
