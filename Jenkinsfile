@@ -17,9 +17,8 @@ pipeline {
         }
         stage('Checkout SCM'){
             steps {
-                git credentialsId: 'git',
-                url: 'https://github.com/dilip0007/gitops-demo.git',
-                branch: 'dev'
+                git branch: 'dev', credentialsId: 'git', url: 'https://github.com/dilip0007/gitops-demo.git'
+                
             }
         }
         stage('Build Docker Image'){
