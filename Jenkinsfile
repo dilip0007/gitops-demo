@@ -26,7 +26,7 @@ pipeline {
         stage('Checkout SCM'){
             steps {
                 git credentialsId: 'github', 
-                url: 'hhttps://github.com/dilip0007/gitops-demo/',
+                url: 'https://github.com/dilip0007/gitops-demo.git',
                 branch: 'dev'
             }
         }
