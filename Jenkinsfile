@@ -33,7 +33,7 @@ pipeline {
 
         stage('Build Docker Image'){
             steps {
-                sh "pwd"
+                dir ('/Users/dilipnigam/.jenkins/workspace/pipeline')
                 sh "docker build -t ${IMAGE_NAME}:latest ."
                     
                 
