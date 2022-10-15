@@ -23,5 +23,12 @@ pipeline {
                 }
             }
         }
+        stage('Checkout SCM'){
+            steps {
+                git credentialsId: 'github', 
+                url: 'hhttps://github.com/dilip0007/gitops-demo/',
+                branch: 'dev'
+            }
+        }
     }
 }
