@@ -9,4 +9,11 @@ pipeline {
             }
         }
     }
+    stage('Cleanup Workspace'){
+            steps {
+                script {
+                    cleanWs()
+                }
+            }
+        }ß
 }
