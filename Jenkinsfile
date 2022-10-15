@@ -31,10 +31,16 @@ pipeline {
             }
         }
 
+        stage('Initialize'){
+             def dockerHome = tool 'myDocker'
+             env.PATH = "${dockerHome}/bin:${env.PATH}"
+        }
+    
+
         stage('Build Docker Image'){
             steps {
                 
-                sh 'docker build -t ${IMAGE_NAME}:latest .'
+                sh "docker build -t ${IMAGE_NAME}:latest ."
                 sh 'pwd'
                     
                 
