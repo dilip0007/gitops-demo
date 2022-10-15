@@ -15,5 +15,5 @@ pipeline {
                     cleanWs()
                 }
             }
-        }ß
+        }
 }
