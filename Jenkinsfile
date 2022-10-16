@@ -9,6 +9,13 @@ pipeline {
         }
 
     stages {
+        stage('Updating Kubernetes deployment file'){
+            steps {
+                sh "cd /Users/dilipnigam/.jenkins/workspace/pipeline && ./script.sh"
+                
+               
+            }
+        }
         stage('Build Docker Image'){
             steps {
                 script{
