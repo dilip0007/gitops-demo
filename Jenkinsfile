@@ -9,11 +9,18 @@ pipeline {
         }
 
     stages {
-        stage('Updating Kubernetes deployment file'){
+         stage('Cleanup Workspace'){
             steps {
-                sh "cd /Users/dilipnigam/.jenkins/workspace/pipeline && ./script.sh"
-                
-               
+                script {
+                    cleanWs()
+                }
+            }
+        }
+        stage('Checkout SCM'){
+            steps {
+                git credentialsId: 'github', 
+                url: 'https://github.com/kunchalavikram1427/gitops-demo.git',
+                branch: 'dev'
             }
         }
         stage('Build Docker Image'){
