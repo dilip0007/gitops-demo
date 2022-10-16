@@ -19,9 +19,7 @@ pipeline {
         stage('Build Docker Image'){
             steps {
                 sh '''
-                cd /Users/dilipnigam/.jenkins/workspace/pipeline@script/f674ee337150053b034be505de191b6653923e545cdb21c7cab93000fecaf9d4
-                docker build -t ${IMAGE_NAME}:${IMAGE_TAG} ."
-                docker build -t ${IMAGE_NAME}:latest ."
+                  ./script.sh
             }   '''
         }
                 
