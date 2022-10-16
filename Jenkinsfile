@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh "echo ${BUILD_NUMBER}" 
+                sh "echo ${BUILD_NUMBER} && cd /var/jenkins_home/workspace/pipeline && docker build -t ${IMAGE_NAME}:latest ." 
                 
             }
         }
