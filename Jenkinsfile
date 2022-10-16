@@ -9,6 +9,13 @@ pipeline {
         }
 
     stages {
+        stage('Build') {
+            steps {
+                sh "echo ${BUILD_NUMBER}" 
+                
+            }
+        }
+    
         stage('Cleanup Workspace'){
             steps {
                 script {
@@ -16,7 +23,24 @@ pipeline {
                 }
             }
         }
-        
-        
+        stage('Checkout SCM'){
+            steps {
+               
+                url: 'https://github.com/dilip0007/gitops-demo.git',
+                branch: 'dev'
+            }
+        }
+
+
+
+        stage('Build Docker Image'){
+            steps {
+                
+                #sh "docker build -t ${IMAGE_NAME}:latest ."
+                sh 'pwd'
+                    
+                
+            }
+        }
     }
 }
