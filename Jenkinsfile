@@ -15,20 +15,17 @@ pipeline {
                 
             }
         }
-        stage('Push Docker Image'){
+        
+        stage('Push & Delete Docker Images'){
             steps {
-                script{
-                    docker.withRegistry('', REGISTRY_CREDS ){
-                        docker_image.push("${BUILD_NUMBER}")
-                        docker_image.push('latest')
-                    }
-                }
-            }
-        } 
-        stage('Delete Docker Images'){
-            steps {
-                sh "docker rmi ${IMAGE_NAME}:${IMAGE_TAG}"
-                sh "docker rmi ${IMAGE_NAME}:latest"
+                withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'password', usernameVariable: 'user')]) {
+   
+                sh '''
+                docker login -u $user --password $pass"
+                docker push ${IMAGE_NAME}:${IMAGE_TAG} .
+                docker push ${IMAGE_NAME}:latest .
+                docker rmi ${IMAGE_NAME}:${IMAGE_TAG}"
+                docker rmi ${IMAGE_NAME}:latest"
             }
         }
     
