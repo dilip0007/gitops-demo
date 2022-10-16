@@ -16,21 +16,6 @@ pipeline {
                 }
             }
         }
-        stage('Checkout SCM'){
-            steps {
-                
-                url: 'https://github.com/dilip0007/gitops-demo.git',
-                branch: 'dev'
-            }
-        }
-        stage('Build Docker Image'){
-            steps {
-                script{
-                    docker_image = docker.build "${IMAGE_NAME}"
-                }
-            }
-        }
-    
         
         
     }
