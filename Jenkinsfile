@@ -15,6 +15,22 @@ pipeline {
                 
             }
         }
+        stage('Push Docker Image'){
+            steps {
+                script{
+                    docker.withRegistry('', REGISTRY_CREDS ){
+                        docker_image.push("${BUILD_NUMBER}")
+                        docker_image.push('latest')
+                    }
+                }
+            }
+        } 
+        stage('Delete Docker Images'){
+            steps {
+                sh "docker rmi ${IMAGE_NAME}:${IMAGE_TAG}"
+                sh "docker rmi ${IMAGE_NAME}:latest"
+            }
+        }
     
         
 
