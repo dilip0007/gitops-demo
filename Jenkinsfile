@@ -9,7 +9,7 @@ pipeline {
         }
 
     stages {
-         stage('Cleanup Workspace'){
+        stage('Cleanup Workspace'){
             steps {
                 script {
                     cleanWs()
@@ -18,8 +18,8 @@ pipeline {
         }
         stage('Checkout SCM'){
             steps {
-                git credentialsId: 'github', 
-                url: 'https://github.com/kunchalavikram1427/gitops-demo.git',
+                
+                url: 'https://github.com/dilip0007/gitops-demo.git',
                 branch: 'dev'
             }
         }
@@ -30,7 +30,6 @@ pipeline {
                 }
             }
         }
-        
     
         
         
