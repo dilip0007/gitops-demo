@@ -63,3 +63,5 @@ pipeline {
         
     }
 }
+
+#for jfrog deploymet see this video - https://www.youtube.com/watch?v=M5Iso-_qTYA
